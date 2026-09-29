@@ -1,16 +1,15 @@
-import { View, StyleSheet } from "react-native";
+import { View } from "react-native";
+
 import UserScreen from "./src/presentation/users/UserScreen";
+import ProductScreen from "./src/presentation/products/ProductScreen";
+import PersonScreen from "./src/presentation/persons/PersonScreen";
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <View>
       <UserScreen />
+      <ProductScreen />
+      <PersonScreen />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

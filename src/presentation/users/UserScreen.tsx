@@ -1,21 +1,34 @@
-import { View, Text, Button } from "react-native";
+import { useState } from "react";
+import { View, Text, TextInput, Button } from "react-native";
 import { UserService } from "../../application/services/UserService";
 
 export default function UserScreen() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
-  const loadUsers = async () => {
-    const users = await UserService.getAll();
-    console.log(users);
+  const save = async () => {
+    await UserService.create({ name, email });
+    setName("");
+    setEmail("");
   };
 
   return (
     <View>
-      <Text>User Screen</Text>
+      <Text>Users</Text>
 
-      <Button
-        title="Load Users"
-        onPress={loadUsers}
+      <TextInput
+        placeholder="Name"
+        value={name}
+        onChangeText={setName}
       />
+
+      <TextInput
+        placeholder="Email"
+        value={email}
+        onChangeText={setEmail}
+      />
+
+      <Button title="Save User" onPress={save}/>
     </View>
   );
 }
